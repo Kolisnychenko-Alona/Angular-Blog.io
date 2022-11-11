@@ -1,0 +1,103 @@
+<header>
+  <h1>Angular Blog</h1>
+  <div class="buttons">
+    <div class="buttons-home" *ngIf="btnsHome">
+      <button class="buttons-home-in" (click)="signIn()">Sign In</button>
+      <button class="buttons-home-up" (click)="signUp()">Sign Up</button>
+    </div>
+    <div class="buttons-admin" *ngIf="!btnsHome">
+      <button class="buttons-admin-add" (click)="addPost()">Add post</button>
+      <div class="admin">{{activeUser}}</div>
+      <button class="buttons-admin-out" (click)="signOut()">Sign Out</button>
+   </div>
+   <!-- <div class="buttons-user">
+      <button>Add post</button>
+      <div></div>
+      <button>Sign Out</button>
+   </div> -->
+  </div>
+</header>
+<main>
+  <div class="post" *ngFor="let post of blog; index as i">
+    <div class="post-information">
+      <div class="post-information-left">
+        <h3>{{post.topic}}</h3>
+        <div class="posted-by">Posted by: {{post.postedBy}}</div>
+        <div class="text">
+          {{ post.message | slice:0:60}} 
+          <span *ngIf="post.message.length>60">...</span>
+        </div>
+      </div>
+      <div class="post-information-right">
+        <div class="data">
+          <i class="uil uil-clock"></i>
+          {{post.date | date: 'HH:MM, dd.MM.YYY'}}</div>
+      </div>
+    </div>
+    <div class="post-btns" *ngIf="activeUser === post.postedBy || activeUser === 'admin' ">
+      <button class="post-btns-edit" (click)="editPost(i)">Edit</button>
+      <button class="post-btns-delete" (click)="deletePost(i)">Delete</button>
+    </div>
+  </div>
+</main>
+
+<div *ngIf="activeIn" class="wrapper">
+  <div class="modal">
+    <header class="modal-header">
+      <h3>Sign In</h3>
+      <div (click)="close()">x</div>
+    </header>
+    <main>
+      <div>Email:</div>
+      <input type="text" [(ngModel)]="email" name="email">
+      <div>Password:</div>
+      <input type="password" [(ngModel)]="password" name="password">
+    </main>
+    <footer>
+      <button class="modal-close-btn" (click)="close()">Close</button>
+      <button class="modal-submit-btn" (click)="submitEnter()">Submit</button>
+    </footer>
+  </div>
+</div>
+<div *ngIf="activeUp" class="wrapper">
+  <div class="modal sign-up">
+    <header class="modal-header">
+      <h3>Sign Up</h3>
+      <div (click)="close()">x</div>
+    </header>
+    <main class="sign-up">
+      <div>Username:</div>
+      <input type="text" [(ngModel)]="userName" name="userName">
+      <div>Email:</div>
+      <input type="text" [(ngModel)]="email" name="email">
+      <div>Password:</div>
+      <input type="password" [(ngModel)]="password" name="password">
+    </main>
+    <footer>
+      <button class="modal-close-btn" (click)="close()">Close</button>
+      <button class="modal-submit-btn sign-up" (click)="submitAdd()">Submit</button>
+    </footer>
+  </div>
+</div>
+<div *ngIf="activeAdd" class="wrapper">
+  <div class="modal add">
+    <header class="modal-header">
+      <h3>Add post</h3>
+      <div (click)="close()">x</div>
+    </header>
+    <main class="add">
+      <div>Title:</div>
+      <input type="text" [(ngModel)]="title" name="title">
+      <div>Text:</div>
+      <textarea name="text" [(ngModel)]="text"></textarea>
+    </main>
+    <footer>
+      <button class="modal-close-btn" (click)="close()">Close</button>    
+      <button [disabled]="!text" class="modal-submit-btn add" (click)="post()" *ngIf="!editStatus">Post</button>
+      <button [disabled]="!text" class="modal-submit-btn adit" (click)="edit()" *ngIf="editStatus">Edit post</button>
+    </footer>
+  </div>
+</div>
+
+
+

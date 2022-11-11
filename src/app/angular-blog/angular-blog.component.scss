@@ -1,0 +1,298 @@
+@import '../shared/styles/variables';
+
+*{
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 16px;
+}
+
+header{
+   width: 100%;
+   height: 50px;
+   padding: 0 20px;
+   background-color: $btn-gray;
+   color: white;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   h1{
+      font-size: 20px;
+   }
+   .buttons{
+      height: 35px;
+      &-home-in{
+         height: 35px;
+         width: 70px;
+         background-color: transparent;
+         border: 2px solid $btn-green;
+         color: $btn-green;
+         border-top-left-radius: 5px;
+         border-bottom-left-radius: 5px;
+         &:hover{
+            background-color: $btn-green;
+            color: white;
+            cursor: pointer;
+         }
+         &:focus{
+            box-shadow: 0 0 5px 2px $btn-green;
+         }
+      }
+      &-home-up{
+         height: 35px;
+         width: 70px;
+         background-color: transparent;
+         border: 2px solid $btn-blue;
+         color: $btn-blue;
+         border-top-right-radius: 5px;
+         border-bottom-right-radius: 5px;
+         &:hover{
+            background-color: $btn-blue;
+            color: white;
+            cursor: pointer;
+         }
+         &:focus{
+            box-shadow: 0 0 5px 2px $btn-blue;
+         }
+      }
+      &-admin{
+         display: flex;
+         justify-content: end;
+      }
+      &-admin-add{
+         height: 35px;
+         width: 80px;
+         background-color: transparent;
+         border: 2px solid $btn-green;
+         color: $btn-green;
+         border-top-left-radius: 5px;
+         border-bottom-left-radius: 5px;
+         &:hover{
+            background-color: $btn-green;
+            color: white;
+            cursor: pointer;
+         }
+         &:focus{
+            box-shadow: 0 0 5px 2px $btn-green;
+         }
+      }
+      .admin{
+         height: 35px;
+         width: 55px;
+         line-height: 35px;
+         text-align: center;
+         background-color: $btn-yellow;
+         color: black;
+      }
+      &-admin-out{
+         height: 35px;
+         width: 80px;
+         background-color: transparent;
+         border: 2px solid $btn-yellow;
+         color: $btn-yellow;
+         border-top-right-radius: 5px;
+         border-bottom-right-radius: 5px;
+         &:hover{
+            background-color: $btn-yellow;
+            color: white;
+            cursor: pointer;
+         }
+         &:focus{
+            box-shadow: 0 0 5px 2px $btn-yellow;
+         }
+      }
+   } 
+   
+}
+main{
+   width: 80%;
+   margin: 0 auto;
+   .post{
+      margin-top: 10px;
+      padding: 25px;
+      width: 100%;
+      height: 200px;
+      border: 2px solid grey;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      &-information{
+         height: 100px;
+         width: 100%;
+         display: flex;
+         justify-content: space-between;
+         &-left{
+            width: 80%;
+            .posted-by{
+               color: gray;
+            }
+            .text{
+               margin-top: 10px;
+               text-align: justify;
+            }
+         }
+         &-right{
+            height: 100px;
+            line-height: 100px;
+            width: 20%;
+            text-align: right;
+            color: gray;
+         }
+      }
+      &-btns{
+         width: 100px;
+         height: 50px;
+         &-edit{
+            width: 40px;
+            height: 30px;
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+            font-size: 14px;
+            background-color: $btn-yellow;
+         }
+         &-delete{
+            width: 60px;
+            height: 30px;
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+            font-size: 14px;
+            background-color: $btn-red;
+            color: white;
+         }
+
+      }
+   }
+}
+.wrapper{
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100vh;
+   padding-top: 50px;
+   background-color: rgba(0, 0, 0, 0.637);
+   display: flex;
+   justify-content: center;
+   .modal{
+      width: 450px;
+      height: 300px;
+      background-color: white;
+      border-radius: 5px;
+      padding: 5px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      &-header{
+         width: 100%;
+         height: 60px;
+         background-color: white;
+         color: black;
+         border-bottom: 1px solid gray;
+         div{
+            color: $btn-gray;
+            &:hover{
+               cursor: pointer;
+            }
+         }
+      }
+      &.sign-up{
+         height: 400px;
+      }
+      &.add{
+         height: 350px;
+      }
+      main{
+         width: 100%;
+         height: 160px;
+         padding: 0 20px;
+         &.sign-up{
+            height: 230px;
+         }
+         &.add{
+            height: 230px;
+         }
+         div{
+            width: 100%;
+            height: 30px;
+            margin-top: 5px;
+         }
+         input{
+            width: 100%;
+            height: 30px;
+            padding: 0 5px;
+            border: 1px solid grey;
+            border-radius: 3px;
+            margin-top: 5px;
+            &:focus{
+               border-color: $input-focus;
+               box-shadow: 0 0 2px 3px  $input-focus;
+            }
+         }
+         textarea{
+            width: 100%;
+            height: 100px;
+            padding: 5px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            &:focus{
+               border-color: $input-focus;
+               box-shadow: 0 0 2px 3px  $input-focus;
+            }
+         }
+      }
+      footer{
+         width: 100%;
+         height: 60px;
+         padding: 0 20px;
+         border-top: 1px solid gray;
+         display: flex;
+         justify-content: end;
+         align-items: center;
+         .modal-close-btn{
+            width: 55px;
+            height: 35px;
+            margin-right: 5px;
+            font-size: 14px;
+            color: white;
+            background-color: $btn-gray;
+            border-radius: 3px;
+            &:hover{
+               background-color: $btn-gray-hover;
+               cursor: pointer;
+            }
+            &:focus{
+               box-shadow: 0 0 5px 1px $btn-gray;
+            }
+         }
+         .modal-submit-btn{
+            width: 65px;
+            height: 35px;
+            font-size: 14px;
+            color: white;
+            background-color: $btn-green;
+            border-radius: 3px;
+            &:hover{
+               background-color: $btn-green-hover;
+               cursor: pointer;
+            }
+            &:focus{
+               box-shadow: 0 0 5px 1px $btn-green;
+            }
+            &.sign-up{
+               background-color: $btn-blue;
+               &:hover{
+                  background-color: $btn-blue-hover;
+               }
+               &:hover{
+                  box-shadow: 0 0 5px 1px $btn-blue;
+               }
+            }
+            &.add{
+               width: 50px;
+            }
+            &.adit{
+               width: 80px;
+            }
+         }
+      }
+   }
+}
